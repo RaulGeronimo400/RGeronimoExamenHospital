@@ -1,0 +1,38 @@
+<div class="table-responsive">
+  <table class="table text-nowrap">
+    <thead>
+      <tr>
+        <th scope="col">Editar</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Paterno</th>
+        <th scope="col">Materno</th>
+        <th scope="col">Fecha Nacimiento</th>
+        <th scope="col">Fecha Ingreso</th>
+        <th scope="col">Tipo Sangre</th>
+        <th scope="col">Sexo</th>
+        <th scope="col">Sintomas</th>
+        <th scope="col">Eliminar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let Paciente of Pacientes">
+        <td>
+          <a [routerLink]="['/paciente/actualizar', Paciente.idPaciente]" class="btn btn-warning btn-sm">
+            <i class="fa-solid fa-pen-to-square"></i>
+          </a>
+        </td>
+        <td>{{Paciente.nombre}}</td>
+        <td>{{Paciente.paterno}}</td>
+        <td>{{Paciente.materno}}</td>
+        <td>{{Paciente.fechaNacimiento}}</td>
+        <td>{{Paciente.fechaIngreso}}</td>
+        <td>{{Paciente.tipo.nombre}}</td>
+        <td>{{Paciente.sexo}}</td>
+        <td>{{Paciente.sintomas}}</td>
+        <td>
+          <button class=" btn btn-danger btn-sm" (click)="Delete(Paciente.idPaciente)"><i class="far fa-trash-alt"></i></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
