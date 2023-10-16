@@ -34,7 +34,7 @@ namespace webapi.Controllers
             ML.Result result = BL.Paciente.GetById(IdPaciente);
             if (result.Correct)
             {
-                return Ok(result);
+                return Ok(result.Object);
             }
             else
             {

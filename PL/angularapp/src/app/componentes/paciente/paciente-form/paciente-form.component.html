@@ -1,1 +1,132 @@
-<p>paciente-form works!</p>
+<div class="row">
+  <div class="col-md-6 offset-md-2">
+    <div class="card">
+      <div class="card-body">
+        <form [formGroup]="form" (ngSubmit)="edit ? Update() : Add()">
+
+          <!-- Nombre -->
+          <div class="card-body">
+            <input type="text" formControlName="nombre" [(ngModel)]="paciente.nombre" placeholder="Nombre del Paciente:"
+                   class="form-control" autofocus>
+
+            <span *ngIf="form.get('nombre')?.hasError('required') && form.get('nombre')?.touched">
+              El campo <span class="alerta">Nombre</span> es <strong>Requerido</strong>
+            </span>
+          </div>
+
+          <!-- AP -->
+          <div class="card-body">
+            <input type="text" formControlName="ap" [(ngModel)]="paciente.ap" placeholder="Apellido Paterno:"
+                   class="form-control">
+
+            <span *ngIf="form.get('ap')?.hasError('required') && form.get('ap')?.touched">
+              El campo <span class="alerta">Apellido Paterno</span> es <strong>Requerido</strong>
+            </span>
+          </div>
+
+          <!-- AM -->
+          <div class="card-body">
+            <input type="text" formControlName="am" [(ngModel)]="paciente.am" placeholder="Apellido Materno:"
+                   class="form-control">
+
+            <span *ngIf="form.get('am')?.hasError('required') && form.get('am')?.touched">
+              El campo <span class="alerta">Apellido Materno</span> es <strong>Requerido</strong>
+            </span>
+          </div>
+
+          <!-- Nacimiento -->
+          <div class="card-body">
+            <div class="input-group">
+              <label for="Nacimiento" class="input-group-text">Fecha de Nacimiento</label>
+              <input id="Nacimiento" type="date" [(ngModel)]="paciente.fechaNacimiento" formControlName="fechaNacimiento"
+                     class="form-control" />
+            </div>
+
+            <span *ngIf="form.get('fechaNacimiento')?.hasError('required') && form.get('fechaNacimiento')?.touched">
+              El
+              campo <span class="alerta">FECHA NACIMIENTO</span> es <strong>Requerido</strong>
+            </span>
+          </div>
+
+          <!-- Ingreso -->
+          <div class="card-body">
+            <div class="input-group">
+              <label for="FechaIngreso" class="input-group-text">Fecha de Ingreso</label>
+              <input id="FechaIngreso" type="datetime-local" [(ngModel)]="paciente.fechaIngreso" formControlName="fechaIngreso"
+                     class="form-control" />
+            </div>
+
+            <span *ngIf="form.get('fechaIngreso')?.hasError('required') && form.get('fechaIngreso')?.touched">
+              El
+              campo <span class="alerta">FECHA INGRESO</span> es <strong>Requerido</strong>
+            </span>
+          </div>
+
+          <!-- Tipo Sangre -->
+          <div class="card-body">
+            <div class="input-group">
+              <label class="input-group-text" for="inputGroupSelect02">Tipo Sangre</label>
+              <select formControlName="tipo" [(ngModel)]="paciente.tipo" class="form-control"
+                      id="inputGroupSelect02">
+                <option selected disabled value="">Selecciona un Tipo de Sangre</option>
+                <option *ngFor="let item of Tipo" value="{{item.idTipoSangre}}">{{item.nombre}}</option>
+              </select>
+            </div>
+
+            <span *ngIf="form.get('tipo')?.hasError('required') && form.get('tipo')?.touched">
+              El
+              campo <span class="alerta">Tipo de Sangre</span> es <strong>Requerido</strong>
+            </span>
+          </div>
+
+          <!-- Genero -->
+          <div class="card-body">
+            <div class="input-group">
+              <label class="input-group-text" for="sexo">Genero</label>
+              <select formControlName="sexo" [(ngModel)]="paciente.sexo" class="form-control" id="sexo">
+                <option selected disabled value="">Selecciona un Genero</option>
+                <option value="H">Hombre</option>
+                <option value="M">Mujer</option>
+              </select>
+            </div>
+
+            <span *ngIf="form.get('sexo')?.hasError('required') && form.get('sexo')?.touched">
+              El campo <span class="alerta">GENERO</span> es <strong>Requerido</strong>
+            </span>
+          </div>
+
+          <!-- Sintomas -->
+          <div class="card-body">
+            <textarea formControlName="sintomas" [(ngModel)]="paciente.sintomas" placeholder="Sintomas:"
+                      rows="2" class="form-control"></textarea>
+
+            <span *ngIf="form.get('sintomas')?.hasError('required') && form.get('sintomas')?.touched">
+              El campo
+              <span class="alerta">Sintomas</span> es <strong>Requerido</strong>
+            </span>
+          </div>
+
+          <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+            <button [disabled]="form.invalid" type="submit" class="btn btn-success">Aceptar</button>
+            <button routerLink="/paciente" type="button" class="btn btn-primary">Regresar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4 inicio-card">
+    <div class="card card-body text-center">
+      <h3 style="text-transform: uppercase;">
+        {{paciente.idPaciente}} - {{paciente.nombre == '' ? 'Nombre del Paciente' : paciente.nombre}}
+      </h3>
+      <p>{{paciente.ap == '' ? 'Paterno' : paciente.ap}}</p>
+      <p>{{paciente.am == '' ? 'Materno' : paciente.am}}</p>
+      <p>{{paciente.fechaNacimiento == ''? 'Fecha de Nacimiento' : paciente.fechaNacimiento}}</p>
+      <p>{{paciente.fechaIngreso == ''? 'Fecha de Ingreso' : paciente.fechaIngreso}}</p>
+      <p>{{paciente.sexo == '' ? 'Sexo' : paciente.sexo}}</p>
+      <p>{{paciente.sintomas == '' ? 'Sintomas' : paciente.sintomas}}</p>
+      <!--<p>{{paciente.tipo. == '' ? 'Sintomas' : paciente.tipo}}</p>-->
+    </div>
+  </div>
+</div>

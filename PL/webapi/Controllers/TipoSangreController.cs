@@ -16,7 +16,10 @@ namespace webapi.Controllers
             ML.Result result = BL.TipoSangre.GetAll();
             if (result.Correct)
             {
-                return Ok(result);
+                ML.TipoSangre tipo = new ML.TipoSangre();
+
+                tipo.Tipos = result.Objects;
+                return Ok(tipo.Tipos);
             }
             else
             {

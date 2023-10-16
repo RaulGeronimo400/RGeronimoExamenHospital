@@ -18,8 +18,8 @@ namespace BL
                     DL.Paciente pacienteDL = new DL.Paciente();
 
                     pacienteDL.Nombre = paciente.Nombre;
-                    pacienteDL.Ap = paciente.Paterno;
-                    pacienteDL.Am = paciente.Materno;
+                    pacienteDL.Ap = paciente.AP;
+                    pacienteDL.Am = paciente.AM;
                     pacienteDL.FechaNacimiento = DateTime.Parse(paciente.FechaNacimiento);
                     pacienteDL.FechaIngreso = DateTime.Parse(paciente.FechaIngreso);
                     pacienteDL.IdTipoSangre = paciente.Tipo.IdTipoSangre;
@@ -55,8 +55,8 @@ namespace BL
                     if (query != null)
                     {
                         query.Nombre = paciente.Nombre;
-                        query.Ap = paciente.Paterno;
-                        query.Am = paciente.Materno;
+                        query.Ap = paciente.AP;
+                        query.Am = paciente.AM;
                         query.FechaNacimiento = DateTime.Parse(paciente.FechaNacimiento);
                         query.FechaIngreso = DateTime.Parse(paciente.FechaIngreso);
                         query.IdTipoSangre = paciente.Tipo.IdTipoSangre;
@@ -128,8 +128,8 @@ namespace BL
 
                             paciente.IdPaciente = item.pacienteLQ.IdPaciente;
                             paciente.Nombre = item.pacienteLQ.Nombre;
-                            paciente.Paterno = item.pacienteLQ.Ap;
-                            paciente.Materno = item.pacienteLQ.Am;
+                            paciente.AP = item.pacienteLQ.Ap;
+                            paciente.AM = item.pacienteLQ.Am;
                             paciente.FechaNacimiento = item.pacienteLQ.FechaNacimiento.Value.ToString("dd / MMMM / yyyy");
                             paciente.FechaIngreso = item.pacienteLQ.FechaIngreso.Value.ToString("dd / MMMM / yyyy tt");
                             paciente.Tipo.IdTipoSangre = item.pacienteLQ.IdTipoSangre.Value;
@@ -174,10 +174,10 @@ namespace BL
 
                         paciente.IdPaciente = query.IdPaciente;
                         paciente.Nombre = query.Nombre;
-                        paciente.Paterno = query.Ap;
-                        paciente.Materno = query.Am;
-                        paciente.FechaNacimiento = query.FechaNacimiento.ToString();
-                        paciente.FechaIngreso = query.FechaIngreso.ToString();
+                        paciente.AM = query.Ap;
+                        paciente.AP = query.Am;
+                        paciente.FechaNacimiento = query.FechaNacimiento.Value.ToString("yyyy/MM/dd");
+                        paciente.FechaIngreso = query.FechaIngreso.Value.ToString("yyyy/MM/dd hh:mm:ss");
                         paciente.Tipo.IdTipoSangre = query.IdTipoSangre.Value;
                         paciente.Sexo = query.Sexo;
                         paciente.Sintomas = query.Sintomas;

@@ -10,8 +10,8 @@ namespace ML
     {
         public int IdPaciente { get; set; }
         public string? Nombre { get; set; }
-        public string? Paterno { get; set; }
-        public string? Materno { get; set; }
+        public string? AP { get; set; }
+        public string? AM { get; set; }
         public string? FechaNacimiento { get; set; }
         public string? FechaIngreso { get; set; }
         public TipoSangre? Tipo { get; set; }
