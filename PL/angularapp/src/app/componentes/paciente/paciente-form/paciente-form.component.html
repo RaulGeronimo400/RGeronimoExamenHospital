@@ -66,14 +66,14 @@
           <div class="card-body">
             <div class="input-group">
               <label class="input-group-text" for="inputGroupSelect02">Tipo Sangre</label>
-              <select formControlName="tipo" [(ngModel)]="paciente.tipo" class="form-control"
+              <select formControlName="idTipoSangre" [(ngModel)]="tipo.idTipoSangre" class="form-control"
                       id="inputGroupSelect02">
-                <option selected disabled value="">Selecciona un Tipo de Sangre</option>
+                <option disabled value="">Selecciona un Tipo de Sangre</option>
                 <option *ngFor="let item of Tipo" value="{{item.idTipoSangre}}">{{item.nombre}}</option>
               </select>
             </div>
 
-            <span *ngIf="form.get('tipo')?.hasError('required') && form.get('tipo')?.touched">
+            <span *ngIf="form.get('idTipoSangre')?.hasError('required') && form.get('idTipoSangre')?.touched">
               El
               campo <span class="alerta">Tipo de Sangre</span> es <strong>Requerido</strong>
             </span>
@@ -84,9 +84,9 @@
             <div class="input-group">
               <label class="input-group-text" for="sexo">Genero</label>
               <select formControlName="sexo" [(ngModel)]="paciente.sexo" class="form-control" id="sexo">
-                <option selected disabled value="">Selecciona un Genero</option>
-                <option value="H">Hombre</option>
-                <option value="M">Mujer</option>
+                <option disabled value="">Selecciona un Genero</option>
+                <option value="H ">Hombre</option>
+                <option value="M ">Mujer</option>
               </select>
             </div>
 
@@ -124,9 +124,9 @@
       <p>{{paciente.am == '' ? 'Materno' : paciente.am}}</p>
       <p>{{paciente.fechaNacimiento == ''? 'Fecha de Nacimiento' : paciente.fechaNacimiento}}</p>
       <p>{{paciente.fechaIngreso == ''? 'Fecha de Ingreso' : paciente.fechaIngreso}}</p>
+      <p>{{tipo.idTipoSangre == '' ? 'Tipo' : tipo.idTipoSangre}}</p>
       <p>{{paciente.sexo == '' ? 'Sexo' : paciente.sexo}}</p>
       <p>{{paciente.sintomas == '' ? 'Sintomas' : paciente.sintomas}}</p>
-      <!--<p>{{paciente.tipo. == '' ? 'Sintomas' : paciente.tipo}}</p>-->
     </div>
   </div>
 </div>

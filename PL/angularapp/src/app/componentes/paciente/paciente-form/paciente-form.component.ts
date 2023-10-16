@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { environment } from '../../../../environments/environment.development';
 import { Paciente } from '../../../modelos/Paciente';
+import { TipoSangre } from '../../../modelos/TipoSangre';
 
 @Component({
   selector: 'app-paciente-form',
@@ -14,6 +15,8 @@ import { Paciente } from '../../../modelos/Paciente';
 export class PacienteFormComponent implements OnInit {
   API_URI = environment.apiUrl;
   form: FormGroup;
+
+  prueba: any;
 
   paciente: Paciente = {
     idPaciente: 0,
@@ -29,6 +32,9 @@ export class PacienteFormComponent implements OnInit {
     }
   };
 
+  tipo: TipoSangre = {
+    idTipoSangre: ''
+  }
 
   edit: boolean = false;
 
@@ -48,9 +54,7 @@ export class PacienteFormComponent implements OnInit {
       am: ['', Validators.required],
       fechaNacimiento: ['', Validators.required],
       fechaIngreso: ['', Validators.required],
-      tipo:{
       idTipoSangre: ['', Validators.required],
-      },
       sexo: ['', Validators.required],
       sintomas: ['', Validators.required],
     });
@@ -63,7 +67,8 @@ export class PacienteFormComponent implements OnInit {
       this.http.get(this.API_URI + '/Paciente/' + params['IdPaciente']).subscribe(
         (res) => {
           console.log(res); //Muestra en consola
-          this.paciente = res; //Muestra en el navegador
+          this.paciente = res as Paciente; //Muestra en el navegador
+          this.tipo.idTipoSangre = this.paciente.tipo.idTipoSangre;
           this.edit = true; //Asignamos que es verdadero
         },
         (err) => console.error(err)
@@ -72,6 +77,7 @@ export class PacienteFormComponent implements OnInit {
   }
 
   Add() {
+    this.paciente.tipo.idTipoSangre = this.tipo.idTipoSangre;
     this.http.post(this.API_URI + '/Paciente', this.paciente).subscribe(
       (res) => {
         console.log(res);
@@ -87,6 +93,7 @@ export class PacienteFormComponent implements OnInit {
   }
 
   Update() {
+    this.paciente.tipo.idTipoSangre = this.tipo.idTipoSangre;
     const params = this.activatedRoute.snapshot.params;
     this.http.put(this.API_URI + '/Paciente/' + params['IdPaciente'], this.paciente).subscribe(
       (res) => {

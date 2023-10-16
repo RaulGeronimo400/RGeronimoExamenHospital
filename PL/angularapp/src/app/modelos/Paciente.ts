@@ -1,3 +1,5 @@
+import { TipoSangre } from "./TipoSangre";
+
 export interface Paciente {
   idPaciente?: number;
   nombre?: string;
@@ -5,9 +7,7 @@ export interface Paciente {
   am?: string;
   fechaNacimiento?: string;
   fechaIngreso?: string;
-  tipo?: {
-    idTipoSangre: ''
-  };
+  tipo: TipoSangre;
   sexo?: string;
   sintomas?: string;
 }

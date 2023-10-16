@@ -131,7 +131,7 @@ namespace BL
                             paciente.AP = item.pacienteLQ.Ap;
                             paciente.AM = item.pacienteLQ.Am;
                             paciente.FechaNacimiento = item.pacienteLQ.FechaNacimiento.Value.ToString("dd / MMMM / yyyy");
-                            paciente.FechaIngreso = item.pacienteLQ.FechaIngreso.Value.ToString("dd / MMMM / yyyy tt");
+                            paciente.FechaIngreso = item.pacienteLQ.FechaIngreso.Value.ToString("dd / MMMM / yyyy hh:mm:ss tt");
                             paciente.Tipo.IdTipoSangre = item.pacienteLQ.IdTipoSangre.Value;
                             paciente.Tipo.Nombre = item.tipoSangre.Nombre;
                             paciente.Sexo = item.pacienteLQ.Sexo;
@@ -176,8 +176,8 @@ namespace BL
                         paciente.Nombre = query.Nombre;
                         paciente.AM = query.Ap;
                         paciente.AP = query.Am;
-                        paciente.FechaNacimiento = query.FechaNacimiento.Value.ToString("yyyy/MM/dd");
-                        paciente.FechaIngreso = query.FechaIngreso.Value.ToString("yyyy/MM/dd hh:mm:ss");
+                        paciente.FechaNacimiento = query.FechaNacimiento.Value.ToString("yyyy-MM-dd");
+                        paciente.FechaIngreso = query.FechaIngreso.Value.ToString("yyyy-MM-dd hh:mm");
                         paciente.Tipo.IdTipoSangre = query.IdTipoSangre.Value;
                         paciente.Sexo = query.Sexo;
                         paciente.Sintomas = query.Sintomas;

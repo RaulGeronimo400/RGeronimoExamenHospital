@@ -2,9 +2,9 @@ import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 //Cambiar el idioma
-import localeEsMX from '@angular/common/locales/es-MX';
-import { registerLocaleData } from '@angular/common';
-registerLocaleData(localeEsMX);
+//import localeEsMX from '@angular/common/locales/es-MX';
+//import { registerLocaleData } from '@angular/common';
+//registerLocaleData(localeEsMX);
 
 //Importamos el modulo de http
 import { HttpClientModule } from '@angular/common/http';
