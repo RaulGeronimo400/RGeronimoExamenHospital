@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { environment } from '../../../../environments/environment.development';
 
 //ALERTAS
@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
   templateUrl: './paciente-list.component.html',
   styleUrls: ['./paciente-list.component.css']
 })
-export class PacienteListComponent {
+export class PacienteListComponent implements OnInit {
   Pacientes: any = [];
   API_URI = environment.apiUrl;
   constructor(private http: HttpClient, private toastr: ToastrService) { }

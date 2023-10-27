@@ -84,7 +84,7 @@ export class PacienteFormComponent implements OnInit {
         console.log('El paciente fue insertado correctamente');
         this.router.navigate(['paciente']);
         this.toastr.success(
-          `El paciente fue '${this.paciente.nombre}' insertado correctamente`,
+          `El paciente '${this.paciente.nombre}' fue insertado correctamente`,
           'Paciente agregado'
         );
       },
